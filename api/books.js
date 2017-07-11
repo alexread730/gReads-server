@@ -12,7 +12,6 @@ function makeBookArray(books) {
   const collectionOfBooks = [];
   const booksWithAuthors = {};
   books.forEach(book => {
-    console.log(book);
     if (!booksWithAuthors[book.book_id]) {
       const bookInstance = {
         id: book.book_id,
@@ -30,7 +29,7 @@ function makeBookArray(books) {
       lastName: book.lastName
     })
   })
-  return booksWithAuthors;
+  return collectionOfBooks;
 }
 
 router.get('/', (req, res) => {
