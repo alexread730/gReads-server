@@ -5,8 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var cors = require('cors');
+require('dotenv').config();
 
 var app = express();
+
+app.use(cors({
+  origin: process.env.CORS_ORIGIN,
+  credentials: true,
+  methods: "GET,PUT,POST,DELETE",
+  preflightContinue: false
+}));
 
 const books = require('./api/books');
 
@@ -17,12 +25,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  credentials: true,
-  methods: "GET,PUT,POST,DELETE",
-  preflightContinue: false
-}));
+
 
 app.use('/api/v1/books', books);
 
