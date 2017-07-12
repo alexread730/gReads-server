@@ -3,8 +3,8 @@ const router = express.Router()
 const queries = require('../db/book-queries.js');
 const knex = require('../db/knex')
 
-function isValidId(req, res, next) {
-  if (!isNaN(req.params.id)) return next();
+function isValid(req, res, next) {
+  if (req.body !== "") return next();
   next(new Error('Invalid ID'));
 }
 
@@ -35,14 +35,15 @@ function makeBookArray(books) {
 router.get('/', (req, res) => {
   queries.getAllBooks()
     .then(books => {
-      res.json(makeBookArray(books));
+      // res.json(makeBookArray(books));
+      res.json(books);
     });
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', isValid, (req, res, next) => {
   queries.createBook(req.body)
     .then(books => {
-      res.json(books);
+      res.json("Inserted one Book!");
     });
 });
 
