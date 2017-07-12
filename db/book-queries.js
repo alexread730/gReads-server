@@ -1,7 +1,7 @@
 const knex = require('./knex');
 
 module.exports = {
-  //  Books
+
   getAllBooks: () => {
     return knex('author_book')
               .join('author', 'author.id', 'author_id')
@@ -11,10 +11,10 @@ module.exports = {
 
   createBook: (book) => {
     return knex('book').insert({
-      title: book.title,
-      genre: book.genre,
-      description: book.description,
-      cover_url: book.cover_url
-    });
+              title: book.title,
+              genre: book.genre,
+              description: book.description,
+              cover_url: book.cover_url
+            });
   }
 }
