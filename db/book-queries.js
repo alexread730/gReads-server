@@ -3,7 +3,11 @@ const knex = require('./knex');
 module.exports = {
 
   getOneBook: (id) => {
-      return knex('book').where('book.id', id).first();
+    return knex('author_book').where('book_id', id)
+              .join('book', 'book.id', 'book_id')
+              .join('author', 'author.id', 'author_id')
+              .select('book_id','title', 'genre', 'firstName', 'lastName', 'description', 'cover_url');
+      // return knex('book').where('book.id', id).first();
   },
 
   getAllBooks: () => {
