@@ -18,6 +18,7 @@ app.use(cors({
 
 const books = require('./api/books');
 const author = require('./api/author');
+const authorBook = require('./api/author-book.js');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -30,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1/books', books);
 app.use('/api/v1/author', author);
+app.use('/api/v1/author-book', authorBook);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
