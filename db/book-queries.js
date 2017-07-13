@@ -3,7 +3,7 @@ const knex = require('./knex');
 module.exports = {
 
   getOneBook: (id) => {
-      return knex('book').where('book.id', id);
+      return knex('book').where('book.id', id).first();
   },
 
   getAllBooks: () => {
