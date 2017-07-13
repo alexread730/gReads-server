@@ -54,6 +54,13 @@ router.post('/', isValid, (req, res, next) => {
     });
 });
 
+router.put('/:id', isValid, (req, res) => {
+  queries.editBook(req.body, req.params.id)
+    .then(books => {
+      res.json("Edited Book!");
+    });
+});
+
 router.delete('/:id', (req, res) => {
   queries.deleteBook(req.body)
     .then(book => {

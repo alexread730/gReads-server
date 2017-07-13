@@ -22,8 +22,16 @@ module.exports = {
               cover_url: book.cover_url
             });
   },
+  editBook: (book, id) => {
+    return knex('book').where('book.id', id).update({
+              title: book.title,
+              genre: book.genre,
+              description: book.description,
+              cover_url: book.cover_url
+            });
+  },
 
   deleteBook: (bookId) => {
       return knex('book').where('book.id', bookId.id).del();
-  },
+  }
 }
