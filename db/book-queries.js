@@ -20,7 +20,7 @@ module.exports = {
               genre: book.genre,
               description: book.description,
               cover_url: book.cover_url
-            });
+            }, "id");
   },
   editBook: (book, id) => {
     return knex('book').where('book.id', id).update({

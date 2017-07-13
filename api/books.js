@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
 router.post('/', isValid, (req, res, next) => {
   queries.createBook(req.body)
     .then(books => {
-      res.json("Inserted one Book!");
+      res.json(books[0]);
     });
 });
 
