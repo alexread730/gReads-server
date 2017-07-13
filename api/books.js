@@ -40,10 +40,24 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+  queries.getOneBook(req.params.id)
+    .then(book => {
+      res.json(book);
+    });
+});
+
 router.post('/', isValid, (req, res, next) => {
   queries.createBook(req.body)
     .then(books => {
       res.json("Inserted one Book!");
+    });
+});
+
+router.delete('/:id', (req, res) => {
+  queries.deleteBook(req.body)
+    .then(book => {
+      res.json("Book Deleted");
     });
 });
 

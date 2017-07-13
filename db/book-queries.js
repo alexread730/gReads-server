@@ -2,6 +2,10 @@ const knex = require('./knex');
 
 module.exports = {
 
+  getOneBook: (id) => {
+      return knex('book').where('book.id', id);
+  },
+
   getAllBooks: () => {
     // return knex('author_book')
     //           .join('author', 'author.id', 'author_id')
@@ -17,5 +21,9 @@ module.exports = {
               description: book.description,
               cover_url: book.cover_url
             });
-  }
+  },
+
+  deleteBook: (bookId) => {
+      return knex('book').where('book.id', bookId.id).del();
+  },
 }
