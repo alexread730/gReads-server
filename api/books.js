@@ -35,8 +35,8 @@ function makeBookArray(books) {
 router.get('/', (req, res) => {
   queries.getAllBooks()
     .then(books => {
-      // res.json(makeBookArray(books));
-      res.json(books);
+      res.json(makeBookArray(books));
+      // res.json(books);
     });
 });
 
